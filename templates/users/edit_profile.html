@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile | LutoLuto{% endblock %}
+
+{% block content %}
+
+    <h2>Edit My Profile</h2>
+
+    <p>Update your personal information below.</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <br>
+
+    <a href="{% url 'users:profile' %}">Cancel</a>
+
+{% endblock %}

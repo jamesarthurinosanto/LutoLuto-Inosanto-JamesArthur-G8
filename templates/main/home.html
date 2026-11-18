@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Home | LutoLuto{% endblock %}
+
+{% block content %}
+
+    <h2>Welcome to LutoLuto!</h2>
+
+    <p>Your food journey starts here.</p>
+
+    {% if user.is_authenticated %}
+
+        <p>Welcome back, {{ user.first_name|default:user.username }}!</p>
+
+        <a href="{% url 'dashboard:redirect' %}">
+            Go to Dashboard
+        </a>
+
+    {% else %}
+
+        <p>Join LutoLuto by creating an account or logging in.</p>
+
+        <a href="{% url 'users:register' %}">Create an Account</a>
+
+        <br><br>
+
+        <a href="{% url 'users:login' %}">Login</a>
+
+    {% endif %}
+
+{% endblock %}

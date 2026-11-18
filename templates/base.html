@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LutoLuto{% endblock %}</title>
+</head>
+<body>
+
+    <header>
+        <h1>
+            <a href="{% url 'main:home' %}">LutoLuto</a>
+        </h1>
+
+        <nav>
+            <a href="{% url 'main:home' %}">Home</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard:redirect' %}">Dashboard</a>
+                <a href="{% url 'users:profile' %}">My Profile</a>
+
+                <form method="POST" action="{% url 'users:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'users:login' %}">Login</a>
+                <a href="{% url 'users:register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2026 LutoLuto. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

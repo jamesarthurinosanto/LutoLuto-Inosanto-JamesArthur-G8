@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard | LutoLuto{% endblock %}
+
+{% block content %}
+
+    <h2>Admin Dashboard</h2>
+
+    <h3>Welcome, {{ user.username }}!</h3>
+
+    <p>You are logged in as a LutoLuto administrator.</p>
+
+    <h3>Administration</h3>
+
+    <ul>
+        <li>
+            <a href="{% url 'users:profile' %}">View My Profile</a>
+        </li>
+
+        <li>
+            <a href="{% url 'users:edit_profile' %}">Edit My Profile</a>
+        </li>
+
+        <li>
+            <a href="/django-admin/">Open Django Admin</a>
+        </li>
+    </ul>
+
+{% endblock %}

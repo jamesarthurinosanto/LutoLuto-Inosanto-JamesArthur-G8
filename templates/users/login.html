@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login | LutoLuto{% endblock %}
+
+{% block content %}
+
+    <h2>Login to LutoLuto</h2>
+
+    <p>Welcome back! Please enter your credentials.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>
+        Don't have an account?
+        <a href="{% url 'users:register' %}">Register here</a>
+    </p>
+
+{% endblock %}
